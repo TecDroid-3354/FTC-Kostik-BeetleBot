@@ -9,25 +9,18 @@ import org.firstinspires.ftc.teamcode.utils.devices.OpMotorEx
 
 class ExampleSubsystem(hardwareMap: HardwareMap): SubsystemBase() {
 
-    private var motor: OpMotorEx
+    private val motor: OpMotorEx
 
     init {
-        motor = OpMotorEx(hardwareMap, "Motor1")
-        motor.applyConfigurationAndResetEncoder(
-            OpMotorExConfiguration(
-                GenericMotorConfiguration(),
-                MotorPercentageModeConfiguration()
-            )
-        )
+        motor = OpMotorEx(hardwareMap, ExampleConstants.Identification.motorId)
+        motor.applyConfigurationAndResetEncoder(ExampleConstants.Configuration.motorConfig)
     }
 
-    // Call the motor and run it at power: 1.0
-    fun enableMotor(): Runnable {
-        return {  }
+    fun enableMotor() {
+        motor.setPower(1.0)
     }
 
-    // Call the motor and stop it
-    fun disableMotor(): Runnable {
-        return {  }
+    fun disableMotor() {
+        motor.stopMotor()
     }
 }
