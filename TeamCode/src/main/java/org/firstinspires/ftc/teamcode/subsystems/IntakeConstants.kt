@@ -17,7 +17,7 @@ object IntakeConstants  {
 
     object Configuration {
         private val isMotorInverted = false
-        private val zeroPowerBehaviour = Motor.ZeroPowerBehavior.FLOAT
+        private val zeroPowerBehaviour = Motor.ZeroPowerBehavior.BREAK
         private val gearRatio = 1.0 / 1.0
 
         private val genericConf = GenericMotorConfiguration()
