@@ -9,8 +9,12 @@ import com.seattlesolvers.solverslib.command.InstantCommand
 import com.seattlesolvers.solverslib.gamepad.GamepadEx
 import com.seattlesolvers.solverslib.purepursuit.Path
 import org.firstinspires.ftc.robotcore.external.Telemetry
-import org.firstinspires.ftc.teamcode.subsystems.exampleSubsystem.ExampleConstants
-import org.firstinspires.ftc.teamcode.subsystems.exampleSubsystem.ExampleSubsystem
+import org.firstinspires.ftc.teamcode.subsystems.Intake.Intake
+
+import org.firstinspires.ftc.teamcode.utils.extensions.dpadDown
+import org.firstinspires.ftc.teamcode.utils.extensions.dpadUp
+import org.firstinspires.ftc.teamcode.utils.extensions.leftBumper
+import org.firstinspires.ftc.teamcode.utils.extensions.leftTrigger
 import org.firstinspires.ftc.teamcode.utils.Alliance
 import org.firstinspires.ftc.teamcode.utils.TecDroidRobot
 import org.firstinspires.ftc.teamcode.utils.extensions.circle
@@ -48,7 +52,7 @@ class Robot(
         // Build Commands:
         // controller.button().onTrue(Command)
 
-         controller.a().onTrue(intake.turnOnIntakeCMD()).onFalse(intake.turnOffIntakeCMD())
+         controller.leftTrigger().onTrue(intake.turnOnIntakeCMD()).onFalse(intake.turnOffIntakeCMD())
 
     }
 
