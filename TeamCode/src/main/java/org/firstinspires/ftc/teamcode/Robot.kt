@@ -17,6 +17,10 @@ import org.firstinspires.ftc.teamcode.utils.extensions.circle
 import org.firstinspires.ftc.teamcode.utils.extensions.onFalse
 import org.firstinspires.ftc.teamcode.utils.extensions.onTrue
 
+import org.firstinspires.ftc.teamcode.subsystems.Intake.Intake
+import org.firstinspires.ftc.teamcode.utils.extensions.leftTrigger
+
+
 class Robot(
     private val alliance: Alliance,
     private val hardwareMap: HardwareMap,
@@ -24,7 +28,7 @@ class Robot(
     telemetry: Telemetry
 ): TecDroidRobot(telemetry, hardwareMap) {
 
-    private lateinit var exampleSubsystem: ExampleSubsystem
+    private lateinit var intake: Intake
 
     init {
         subsystemInitialization()
@@ -32,7 +36,7 @@ class Robot(
 
     /* Initialize your subsystems and follower here */
     override fun subsystemInitialization() {
-        exampleSubsystem = ExampleSubsystem(hardwareMap)
+        intake = Intake(hardwareMap)
     }
 
     /* Runs indefinitely after the init button on the DS is pressed. Stops when play button is pressed */
@@ -45,9 +49,9 @@ class Robot(
         // Build Commands:
         // controller.button().onTrue(Command)
 
-        controller.circle()
-            .onTrue(InstantCommand({ exampleSubsystem.enableMotor() }))
-            .onFalse(InstantCommand({ exampleSubsystem.disableMotor() }))
+        controller.leftTrigger()
+            .onTrue(InstantCommand({ intake.turnOnIntakeCMD() }))
+            .onFalse(InstantCommand({ intake.turnOffIntakeCMD() }))
     }
 
     /* Initialize your auto commands here, set chassis alliance and starting pose */
