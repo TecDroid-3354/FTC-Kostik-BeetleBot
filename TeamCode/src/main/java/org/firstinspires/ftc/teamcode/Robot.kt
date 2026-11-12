@@ -9,13 +9,19 @@ import com.seattlesolvers.solverslib.command.InstantCommand
 import com.seattlesolvers.solverslib.gamepad.GamepadEx
 import com.seattlesolvers.solverslib.purepursuit.Path
 import org.firstinspires.ftc.robotcore.external.Telemetry
-import org.firstinspires.ftc.teamcode.subsystems.exampleSubsystem.ExampleConstants
-import org.firstinspires.ftc.teamcode.subsystems.exampleSubsystem.ExampleSubsystem
+import org.firstinspires.ftc.teamcode.subsystems.Intake.Intake
+
+import org.firstinspires.ftc.teamcode.utils.extensions.dpadDown
+import org.firstinspires.ftc.teamcode.utils.extensions.dpadUp
+import org.firstinspires.ftc.teamcode.utils.extensions.leftBumper
+import org.firstinspires.ftc.teamcode.utils.extensions.leftTrigger
 import org.firstinspires.ftc.teamcode.utils.Alliance
 import org.firstinspires.ftc.teamcode.utils.TecDroidRobot
 import org.firstinspires.ftc.teamcode.utils.extensions.circle
 import org.firstinspires.ftc.teamcode.utils.extensions.onFalse
 import org.firstinspires.ftc.teamcode.utils.extensions.onTrue
+
+// HOLA SAM PLEASE CHECK :}
 
 class Robot(
     private val alliance: Alliance,
@@ -24,7 +30,7 @@ class Robot(
     telemetry: Telemetry
 ): TecDroidRobot(telemetry, hardwareMap) {
 
-    private lateinit var exampleSubsystem: ExampleSubsystem
+    private lateinit var intake: Intake
 
     init {
         subsystemInitialization()
@@ -32,7 +38,8 @@ class Robot(
 
     /* Initialize your subsystems and follower here */
     override fun subsystemInitialization() {
-        exampleSubsystem = ExampleSubsystem(hardwareMap)
+        intake = Intake(hardwareMap)
+   
     }
 
     /* Runs indefinitely after the init button on the DS is pressed. Stops when play button is pressed */
@@ -45,9 +52,8 @@ class Robot(
         // Build Commands:
         // controller.button().onTrue(Command)
 
-        controller.circle()
-            .onTrue(InstantCommand({ exampleSubsystem.enableMotor() }))
-            .onFalse(InstantCommand({ exampleSubsystem.disableMotor() }))
+         controller.leftTrigger().onTrue(intake.turnOnIntakeCMD()).onFalse(intake.turnOffIntakeCMD())
+
     }
 
     /* Initialize your auto commands here, set chassis alliance and starting pose */
