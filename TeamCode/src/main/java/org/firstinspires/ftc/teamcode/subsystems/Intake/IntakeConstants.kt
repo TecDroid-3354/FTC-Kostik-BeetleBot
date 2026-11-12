@@ -26,7 +26,7 @@ object IntakeConstants  {
             .withGearRatio(gearRatio)
 
         private val PID = PIDCoefficients(1.0, 0.0, 0.5)
-        private val maxRPM = 200.0
+        private val maxRPM = 1620.0
         private val feedForward = SimpleMotorFeedforward(1.0, 0.0)
 
 
