@@ -7,7 +7,6 @@ import com.seattlesolvers.solverslib.command.SubsystemBase
 import org.firstinspires.ftc.teamcode.utils.AngularVelocity
 import org.firstinspires.ftc.teamcode.utils.devices.OpMotorEx
 
-
 class Shooter(hardwareMap: HardwareMap) : SubsystemBase() {
 
     private val motor = OpMotorEx(hardwareMap, ShooterConstants.Identification.shooterId)
