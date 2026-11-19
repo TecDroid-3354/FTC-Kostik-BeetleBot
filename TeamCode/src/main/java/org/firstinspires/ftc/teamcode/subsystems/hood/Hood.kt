@@ -21,7 +21,7 @@ class Hood(hardwareMap: HardwareMap) {
     fun setPosition(angle: Angle) {
         motor.runToPosition(angle)
     }
-// falta definir los angulos de tiro// //ya se hizo el codigo//
+//yet to know shoot angle
     fun setPositionCMD(angle: Angle): Command {
         return InstantCommand({ setPosition(angle) })
     }

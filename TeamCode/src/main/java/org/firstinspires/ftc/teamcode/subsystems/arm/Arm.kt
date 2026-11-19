@@ -8,18 +8,19 @@ import org.firstinspires.ftc.teamcode.utils.Angle
 import org.firstinspires.ftc.teamcode.utils.devices.OpServoEx
 
 class Arm(hardwareMap: HardwareMap) {
-    val servo: OpServoEx = OpServoEx(hardwareMap, armConstants.identification.ID)
+    var armServo: OpServoEx
 
     init {
+        armServo = OpServoEx(hardwareMap, ArmConstants.Identification.ARM_SERVO_ID)
         configureServo()
     }
 
     private fun configureServo() {
-        servo.applyConfiguration(armConstants.armConfiguration.config)
+        armServo.applyConfiguration(ArmConstants.Configuration.positionConfig)
     }
 
     fun setAnglePickup(angle: Angle) {
-        servo.setServoPosition(angle)
+        armServo.setServoPosition(angle)
     }
 
     fun setAngleCMD(angle: Angle): Command {
